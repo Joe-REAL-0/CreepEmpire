@@ -11,9 +11,6 @@ module.exports.loop = function () {
         if(room.memory.level == undefined){
             room.memory.level = room.controller.level;
         }
-        
-        
-
     }
     Memory.roomsOccupied = roomsOccupied;
 
