@@ -1,0 +1,105 @@
+const energyCosts = {
+    MOVE: 50,
+    WORK: 100,
+    CARRY: 50,
+    ATTACK: 80,
+    TOUGH: 10,
+    HEAL: 250,
+    RANGED_ATTACK: 150,
+    CLAIM: 600,
+};
+
+function calculateBodyCost(body){
+    return body.reduce((cost, part) => cost + energyCosts[part], 0);
+}
+
+modules.exports = {
+    creepRoleList: ['mine', 'store', 'build', 'upgrade', 'repair', 'deliver'],
+    maxCreepCountDic: {
+        mine: [2,2,2,2,2,2,1,1,1],
+        store: [2,2,2,2,2,2,1,1,1],
+        build: [1,1,1,1,1,1,1,1,1],
+        upgrade: [2,2,2,2,2,2,1,1,1],
+        repair: [1,1,1,1,1,1,1,1,1],
+        deliver: [2,2,2,2,2,2,2,2,2]
+    },
+    creepBodyDic : {
+        mine: [
+            [WORK, WORK, CARRY, MOVE],
+            [WORK, WORK, CARRY, MOVE],
+            [WORK, WORK, CARRY, MOVE, MOVE],
+            [WORK, WORK, WORK, CARRY, MOVE, MOVE],
+            [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE],
+            [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE],
+            [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+            [WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+            [WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE],
+        ],
+        build: [
+            [WORK, CARRY, MOVE, MOVE],
+            [WORK, CARRY, MOVE, MOVE],
+            [WORK, CARRY, MOVE, MOVE],
+            [WORK, WORK, CARRY, MOVE, MOVE],
+            [WORK, WORK, CARRY, CARRY, MOVE, MOVE],
+            [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE],
+            [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+            [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+            [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE],
+        ],
+        repair: [
+            [WORK, CARRY, MOVE],
+            [WORK, CARRY, MOVE],
+            [WORK, CARRY, MOVE, MOVE],
+            [WORK, WORK, CARRY, MOVE, MOVE],
+            [WORK, WORK, CARRY, CARRY, MOVE, MOVE],
+            [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE],
+            [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+            [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+            [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE],
+        ],
+        deliver: [
+            [CARRY, MOVE],
+            [CARRY, MOVE],
+            [CARRY, MOVE, MOVE],
+            [CARRY, CARRY, MOVE, MOVE],
+            [CARRY, CARRY, MOVE, MOVE],
+            [CARRY, CARRY, MOVE, MOVE],
+            [CARRY, CARRY, MOVE, MOVE],
+            [CARRY, CARRY, MOVE, MOVE],
+            [CARRY, CARRY, MOVE, MOVE],
+        ],
+        store: [
+            [CARRY, MOVE],
+            [CARRY, MOVE],
+            [CARRY, MOVE, MOVE],
+            [CARRY, CARRY, MOVE, MOVE],
+            [CARRY, CARRY, MOVE, MOVE],
+            [CARRY, CARRY, MOVE, MOVE],
+            [CARRY, CARRY, MOVE, MOVE],
+            [CARRY, CARRY, MOVE, MOVE],
+            [CARRY, CARRY, MOVE, MOVE],
+        ],
+        upgrade: [
+            [WORK, WORK, CARRY, MOVE],
+            [WORK, WORK, CARRY, MOVE],
+            [WORK, WORK, WORK, CARRY, MOVE, MOVE],
+            [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+            [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+            [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+            [WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+            [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE],
+            [WORK, WORK, WORK, WORK, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE],
+        ]
+    },
+    upgradeEnergyDic:{
+        0: 300,
+        1: 500,
+        2: 800,
+        3: 1200,
+        4: 1400,
+        5: 1600,
+        6: 2000,
+        7: 3000,
+        8: 6000,
+    },
+}
